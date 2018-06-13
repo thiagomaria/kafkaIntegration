@@ -60,12 +60,11 @@ public class MessageConsumerApplication {
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
-	private void addAnotherListenerForTopics(String... topics) {
+    private void addAnotherListenerForTopics(String... topics) {
         Map<String, Object> consumerProperties = kafkaProperties.buildConsumerProperties();
-		IntegrationFlow flow = IntegrationFlows
-                .from(Kafka.messageDrivenChannelAdapter(
-                        new DefaultKafkaConsumerFactory(consumerProperties), topics))
+        IntegrationFlow flow = IntegrationFlows
+                .from(Kafka.messageDrivenChannelAdapter(new DefaultKafkaConsumerFactory(consumerProperties), topics))
                 .channel("consumerChannel").get();
-        this.flowContext.registration(flow).register();
+        flowContext.registration(flow).register();
     }
 }

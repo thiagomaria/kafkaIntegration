@@ -36,6 +36,5 @@ public class MessageProducerApplication {
             Map<String, Object> headers = Collections.singletonMap(KafkaHeaders.TOPIC, message.getType().toString());
             producerChannel.send(new GenericMessage<String>(message.toString(), headers));
         }
-        System.out.println("Producer finished...");
     }
 }

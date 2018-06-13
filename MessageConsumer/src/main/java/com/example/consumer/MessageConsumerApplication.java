@@ -54,8 +54,8 @@ public class MessageConsumerApplication {
         }
         Message<?> received = consumerChannel.receive();
         while (received != null) {
-            received = consumerChannel.receive();
             System.out.println("Received " + received.getPayload());
+            received = consumerChannel.receive();
         }
     }
 
